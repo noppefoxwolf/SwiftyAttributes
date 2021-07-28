@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -13,8 +13,21 @@ let package = Package(
         .library(name: "SwiftyAttributes", targets: ["SwiftyAttributes"])
     ],
     targets: [
-        .target(name: "SwiftyAttributes", path: "SwiftyAttributes"),
-        .testTarget(name: "SwiftyAttributesTests", dependencies: ["SwiftyAttributes"], path: "SwiftyAttributesTests")
+        .target(
+            name: "SwiftyAttributes",
+            path: "SwiftyAttributes",
+            exclude: [
+                "Info.plist",
+            ]
+        ),
+        .testTarget(
+            name: "SwiftyAttributesTests",
+            dependencies: ["SwiftyAttributes"],
+            path: "SwiftyAttributesTests",
+            exclude: [
+                "Info.plist",
+            ]
+        )
     ],
     swiftLanguageVersions: [
         .v5
